@@ -2,16 +2,16 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Generation of 1D solitons</title>
+    <title>Generation of 1d solitons</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     
     <script language="javascript">
       function isInternetExplorer() {
-        ua = navigator.userAgent;
+        var ua = navigator.userAgent;
         return ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
       }
 
-      /* Classe Animation per gestire la sequenza di immagini */
+      /* Definizione della classe Animation */
       function Animation(frames, img_id, slider_id, interval, loop_select_id){
         this.img_id = img_id;
         this.slider_id = slider_id;
@@ -23,8 +23,8 @@
         this.frames = new Array(frames.length);
 
         for (var i=0; i<frames.length; i++) {
-         this.frames[i] = new Image();
-         this.frames[i].src = frames[i];
+            this.frames[i] = new Image();
+            this.frames[i].src = frames[i];
         }
         var slider = document.getElementById(this.slider_id);
         slider.max = this.frames.length - 1;
@@ -71,11 +71,11 @@
         this.current_frame += 1;
         if(this.current_frame < this.frames.length){
           this.set_frame(this.current_frame);
-        }else{
+        } else {
           var loop_state = this.get_loop_state();
           if(loop_state == "loop"){ this.first_frame(); }
           else if(loop_state == "reflect"){ this.last_frame(); this.reverse_animation(); }
-          else{ this.pause_animation(); this.last_frame(); }
+          else { this.pause_animation(); this.last_frame(); }
         }
       }
 
@@ -83,11 +83,11 @@
         this.current_frame -= 1;
         if(this.current_frame >= 0){
           this.set_frame(this.current_frame);
-        }else{
+        } else {
           var loop_state = this.get_loop_state();
           if(loop_state == "loop"){ this.last_frame(); }
           else if(loop_state == "reflect"){ this.first_frame(); this.play_animation(); }
-          else{ this.pause_animation(); this.first_frame(); }
+          else { this.pause_animation(); this.first_frame(); }
         }
       }
 
@@ -112,41 +112,66 @@
     </script>
 
     <style>
-        body { text-align: center; font-family: sans-serif; padding-top: 20px; }
-        .animation { display: inline-block; text-align: center; }
-        input[type=range].anim-slider { width: 374px; margin-left: auto; margin-right: auto; }
-        .anim-buttons { margin: 8px 0px; }
-        .anim-buttons button { padding: 0; width: 36px; cursor: pointer; }
-        .anim-state label { margin-right: 8px; }
+        body { text-align: center; font-family: sans-serif; padding: 20px; background-color: #f4f4f4; }
+        .animation { display: inline-block; text-align: center; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        input[type=range].anim-slider { width: 374px; margin: 15px auto; display: block; }
+        .anim-buttons { margin: 10px 0px; }
+        .anim-buttons button { padding: 5px; width: 38px; height: 38px; cursor: pointer; border: 1px solid #ddd; background: #fff; border-radius: 4px; transition: background 0.2s; }
+        .anim-buttons button:hover { background: #f0f0f0; }
+        .anim-state label { margin-right: 10px; font-size: 14px; }
         .anim-state input { margin: 0; vertical-align: middle; }
     </style>
 </head>
 <body>
 
 <div class="animation">
-  <img id="_anim_imgb6f8d68596644c67a16f4df806668ba7">
+  <img id="_anim_img_ds1d_gen">
   
   <div class="anim-controls">
-    <input id="_anim_sliderb6f8d68596644c67a16f4df806668ba7" type="range" class="anim-slider"
+    <input id="_anim_slider_ds1d_gen" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="animb6f8d68596644c67a16f4df806668ba7.set_frame(parseInt(this.value));">
+           oninput="anim_ds1d_gen.set_frame(parseInt(this.value));">
     
     <div class="anim-buttons">
-      <button title="Rallenta" onclick="animb6f8d68596644c67a16f4df806668ba7.slower()"><i class="fa fa-minus"></i></button>
-      <button title="Inizio" onclick="animb6f8d68596644c67a16f4df806668ba7.first_frame()"><i class="fa fa-fast-backward"></i></button>
-      <button title="Indietro" onclick="animb6f8d68596644c67a16f4df806668ba7.previous_frame()"><i class="fa fa-step-backward"></i></button>
-      <button title="Play inverso" onclick="animb6f8d68596644c67a16f4df806668ba7.reverse_animation()"><i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pausa" onclick="animb6f8d68596644c67a16f4df806668ba7.pause_animation()"><i class="fa fa-pause"></i></button>
-      <button title="Play" onclick="animb6f8d68596644c67a16f4df806668ba7.play_animation()"><i class="fa fa-play"></i></button>
-      <button title="Avanti" onclick="animb6f8d68596644c67a16f4df806668ba7.next_frame()"><i class="fa fa-step-forward"></i></button>
-      <button title="Fine" onclick="animb6f8d68596644c67a16f4df806668ba7.last_frame()"><i class="fa fa-fast-forward"></i></button>
-      <button title="Accelera" onclick="animb6f8d68596644c67a16f4df806668ba7.faster()"><i class="fa fa-plus"></i></button>
+      <button title="Slower" onclick="anim_ds1d_gen.slower()"><i class="fa fa-minus"></i></button>
+      <button title="First frame" onclick="anim_ds1d_gen.first_frame()"><i class="fa fa-fast-backward"></i></button>
+      <button title="Previous frame" onclick="anim_ds1d_gen.previous_frame()"><i class="fa fa-step-backward"></i></button>
+      <button title="Play backwards" onclick="anim_ds1d_gen.reverse_animation()"><i class="fa fa-play fa-flip-horizontal"></i></button>
+      <button title="Pause" onclick="anim_ds1d_gen.pause_animation()"><i class="fa fa-pause"></i></button>
+      <button title="Play" onclick="anim_ds1d_gen.play_animation()"><i class="fa fa-play"></i></button>
+      <button title="Next frame" onclick="anim_ds1d_gen.next_frame()"><i class="fa fa-step-forward"></i></button>
+      <button title="Last frame" onclick="anim_ds1d_gen.last_frame()"><i class="fa fa-fast-forward"></i></button>
+      <button title="Faster" onclick="anim_ds1d_gen.faster()"><i class="fa fa-plus"></i></button>
     </div>
-
-    <form name="_anim_loop_selectb6f8d68596644c67a16f4df806668ba7" class="anim-state">
+    
+    <form name="_anim_loop_select_ds1d_gen" class="anim-state">
       <input type="radio" name="state" value="once" id="_radio1"> <label for="_radio1">Once</label>
       <input type="radio" name="state" value="loop" id="_radio2" checked> <label for="_radio2">Loop</label>
       <input type="radio" name="state" value="reflect" id="_radio3"> <label for="_radio3">Reflect</label>
     </form>
   </div>
 </div>
+
+<div style="text-align: center; margin-top: 25px;">
+    <img src="te_ds1d_gen.jpg" alt="statistiche" style="max-width: 900px; width: 100%; border: 1px solid #ccc; border-radius: 5px;">
+</div>
+
+<script language="javascript">
+  (function() {
+    var img_id = "_anim_img_ds1d_gen";
+    var slider_id = "_anim_slider_ds1d_gen";
+    var loop_select_id = "_anim_loop_select_ds1d_gen";
+    var frames = new Array(100);
+    
+    for (var i=0; i<100; i++){
+      frames[i] = "ds1d_gen_frames/frame" + ("0000000" + i).slice(-7) + ".png";
+    }
+
+    setTimeout(function() {
+        anim_ds1d_gen = new Animation(frames, img_id, slider_id, 200.0, loop_select_id);
+    }, 0);
+  })()
+</script>
+
+</body>
+</html>
