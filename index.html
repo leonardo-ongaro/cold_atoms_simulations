@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Verticale Moderno</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f4f7f6;
+            color: #2d3436;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #0984e3;
+            margin-bottom: 10px;
+        }
+
+        /* Contenitore Menu */
+        nav {
+            width: 100%;
+            max-width: 300px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Lista Ordinata Verticale */
+        ol {
+            list-style: none; /* Rimuoviamo il numero predefinito per metterne uno più stiloso */
+            counter-reset: menu-counter; /* Prepariamo un contatore personalizzato */
+        }
+
+        li {
+            counter-increment: menu-counter;
+            margin-bottom: 12px;
+        }
+
+        li:last-child {
+            margin-bottom: 0;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #636e72;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 10px;
+            transition: all 0.2s ease-in-out;
+            background: #fdfdfd;
+            border: 1px solid #f1f1f1;
+        }
+
+        /* Creazione del numero moderno tramite pseudo-elemento */
+        li a::before {
+            content: counter(menu-counter, decimal-leading-zero); /* Es: 01, 02... */
+            margin-right: 15px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #0984e3;
+            opacity: 0.6;
+        }
+
+        /* Effetti al passaggio del mouse */
+        li a:hover {
+            background-color: #0984e3;
+            color: white;
+            transform: translateX(5px); /* Leggero spostamento a destra */
+            border-color: #0984e3;
+        }
+
+        li a:hover::before {
+            color: white;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Simulations of bright and dark solitons in BECs</h1>
+    </header>
+
+    <nav>
+        <ol>
+            <li><a href="bright_solitons_1d/bs1d_f.html">Collision of two 1D bright solitons</a></li>
+            <li><a href="bright_solitons_2d/bs2d1_f.html">Stability of a 2D bright soliton</a></li>
+            <li><a href="bright_solitons_2d/bs2d2_f.html">Instability of a 2D bright soliton</a></li>
+            <li><a href="dark_solitons_1d/ds1d_f.html">Collision of two 1D dark solitons</a></li>
+            <li><a href="dark_solitons_2d/ds2d_f.html">Snaking instability of a 2D dark soliton</a></li>
+            <li><a href="dark_solitons_3d/ds3d_f.html">Vortex ring instability of a 3D dark soliton</a></li>
+            <li><a href="dark_solitons_1d_gen/ds1d_gen_f.html">Generation of 1D solitons</a></li>
+            <li><a href="vortices_2d_gen/v2d_gen_f.html">Generation of 2D vortices</a></li>
+            <li><a href="kh_instability/kh_instability_f.html">Kelvin Helmholtz instability in a 2D BEC</a></li>
+        </ol>
+    </nav>
+
+</body>
+</html>
