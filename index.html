@@ -3,117 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulations of dark and bright solitons in BECs</title>
+    <title>BEC Soliton Simulations</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-color: #2c3e50; /* Blu notte accademico */
+            --accent-color: #3498db;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --line-color: #e0e0e0;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: #f4f7f6;
-            color: #2d3436;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 60px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
         header {
-            text-align: center;
-            margin-bottom: 50px;
+            border-bottom: 2px solid var(--primary-color);
+            margin-bottom: 40px;
+            padding-bottom: 20px;
         }
 
         h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #0984e3;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: -0.5px;
         }
 
-        /* Contenitore Menu */
+        p.subtitle {
+            font-style: italic;
+            color: #666;
+            margin-top: 5px;
+        }
+
         nav {
-            width: 100%;
-            max-width: 300px;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-top: 20px;
         }
 
-        /* Lista Ordinata Verticale */
         ol {
-            list-style: none; /* Rimuoviamo il numero predefinito per metterne uno più stiloso */
-            counter-reset: menu-counter; /* Prepariamo un contatore personalizzato */
+            list-style-type: none;
+            padding: 0;
         }
 
         li {
-            counter-increment: menu-counter;
-            margin-bottom: 12px;
+            border-bottom: 1px solid var(--line-color);
         }
 
         li:last-child {
-            margin-bottom: 0;
+            border-bottom: none;
         }
 
         li a {
             text-decoration: none;
-            color: #636e72;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            border-radius: 10px;
-            transition: all 0.2s ease-in-out;
-            background: #fdfdfd;
-            border: 1px solid #f1f1f1;
+            color: var(--text-color);
+            display: block;
+            padding: 15px 10px;
+            transition: all 0.2s ease;
+            font-size: 1.05rem;
         }
 
-        /* Creazione del numero moderno tramite pseudo-elemento */
-        li a::before {
-            content: counter(menu-counter, decimal-leading-zero); /* Es: 01, 02... */
-            margin-right: 15px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: #0984e3;
-            opacity: 0.6;
-        }
-
-        /* Effetti al passaggio del mouse */
         li a:hover {
-            background-color: #0984e3;
-            color: white;
-            transform: translateX(5px); /* Leggero spostamento a destra */
-            border-color: #0984e3;
+            background-color: #f9f9f9;
+            color: var(--accent-color);
         }
 
-        li a:hover::before {
-            color: white;
-            opacity: 1;
+        /* Indicatore numerico discreto */
+        li {
+            display: flex;
+            align-items: baseline;
+        }
+        
+        .index {
+            font-family: monospace;
+            color: #999;
+            margin-right: 15px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            margin-top: 60px;
+            font-size: 0.85rem;
+            color: #999;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Simulations of bright and dark solitons in BECs</h1>
+        <h1>Simulations of Bright and Dark Solitons in BECs</h1>
     </header>
 
     <nav>
         <ol>
-            <li><a href="bright_solitons_1d/bs1d_f.html">Collision of two 1D bright solitons</a></li>
-            <li><a href="bright_solitons_2d/bs2d1_f.html">Stability of a 2D bright soliton</a></li>
-            <li><a href="bright_solitons_2d/bs2d2_f.html">Instability of a 2D bright soliton</a></li>
-            <li><a href="dark_solitons_1d/ds1d_f.html">Collision of two 1D dark solitons</a></li>
-            <li><a href="dark_solitons_2d/ds2d_f.html">Snaking instability of a 2D dark soliton</a></li>
-            <li><a href="dark_solitons_3d/ds3d_f.html">Vortex ring instability of a 3D dark soliton</a></li>
-            <li><a href="dark_solitons_1d_gen/ds1d_gen_f.html">Generation of 1D solitons</a></li>
-            <li><a href="vortices_2d_gen/v2d_gen_f.html">Generation of 2D vortices</a></li>
-            <li><a href="kh_instability/kh_instability_f.html">Kelvin Helmholtz instability in a 2D BEC</a></li>
+            <li><span class="index">01</span><a href="bright_solitons_1d/bs1d_f.html">Collision of two 1D bright solitons</a></li>
+            <li><span class="index">02</span><a href="bright_solitons_2d/bs2d1_f.html">Stability of a 2D bright soliton</a></li>
+            <li><span class="index">03</span><a href="bright_solitons_2d/bs2d2_f.html">Instability of a 2D bright soliton</a></li>
+            <li><span class="index">04</span><a href="dark_solitons_1d/ds1d_f.html">Collision of two 1D dark solitons</a></li>
+            <li><span class="index">05</span><a href="dark_solitons_2d/ds2d_f.html">Snaking instability of a 2D dark soliton</a></li>
+            <li><span class="index">06</span><a href="dark_solitons_3d/ds3d_f.html">Vortex ring instability of a 3D dark soliton</a></li>
+            <li><span class="index">07</span><a href="dark_solitons_1d_gen/ds1d_gen_f.html">Generation of 1D solitons</a></li>
+            <li><span class="index">08</span><a href="vortices_2d_gen/v2d_gen_f.html">Generation of 2D vortices</a></li>
+            <li><span class="index">09</span><a href="kh_instability/kh_instability_f.html">Kelvin-Helmholtz instability in a 2D BEC</a></li>
         </ol>
     </nav>
+
+    <footer>
+        &copy; 2026 - Project Repository
+    </footer>
 
 </body>
 </html>
