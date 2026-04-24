@@ -11,6 +11,8 @@
             --text-color: #333;
             --bg-color: #ffffff;
             --line-color: #e0e0e0;
+            --warning-bg: #fdfaf0; /* Giallo pallido per avvisi */
+            --warning-border: #f39c12; /* Arancione accademico */
         }
 
         body {
@@ -36,12 +38,6 @@
             letter-spacing: -0.5px;
         }
 
-        p.subtitle {
-            font-style: italic;
-            color: #666;
-            margin-top: 5px;
-        }
-
         nav {
             margin-top: 20px;
         }
@@ -49,10 +45,13 @@
         ol {
             list-style-type: none;
             padding: 0;
+            margin-bottom: 40px;
         }
 
         li {
             border-bottom: 1px solid var(--line-color);
+            display: flex;
+            align-items: baseline;
         }
 
         li:last-child {
@@ -66,6 +65,7 @@
             padding: 15px 10px;
             transition: all 0.2s ease;
             font-size: 1.05rem;
+            flex-grow: 1;
         }
 
         li a:hover {
@@ -73,17 +73,34 @@
             color: var(--accent-color);
         }
 
-        /* Indicatore numerico discreto */
-        li {
-            display: flex;
-            align-items: baseline;
-        }
-        
         .index {
             font-family: monospace;
             color: #999;
             margin-right: 15px;
             font-size: 0.9rem;
+        }
+
+        /* Stile per il messaggio di avviso */
+        .warning-box {
+            background-color: var(--warning-bg);
+            border-left: 4px solid var(--warning-border);
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        .warning-box h2 {
+            margin-top: 0;
+            font-size: 1.1rem;
+            color: var(--warning-border);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .warning-box p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            color: #7f8c8d;
         }
 
         footer {
@@ -113,6 +130,11 @@
             <li><span class="index">09</span><a href="kh_instability/kh_instability_f.html">Kelvin-Helmholtz instability in a 2D BEC</a></li>
         </ol>
     </nav>
+
+    <section class="warning-box">
+        <h2>Attention</h2>
+        <p>Please wait a few seconds for the simulations to download before starting</p>
+    </section>
 
 
 
